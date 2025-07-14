@@ -7,7 +7,7 @@
         name: apache2
         state: present
         update_cache: yes
-    - copy: Copy file with owner and permission
+    - name: Copy file with owner and permission
       ansible.inbuilt.copy:
         src: index/html
         dest: /var/www/html

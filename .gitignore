@@ -1,0 +1,38 @@
+# Ansible sensitive or dynamic files
+*.retry
+*.vault_pass
+*.log
+
+# Encrypted files (optional if decrypted versions are generated)
+*.vault
+
+# Inventory-related (if dynamic or sensitive)
+inventory/*.ini
+inventory/*.yaml
+inventory/*.yml
+inventory/host_vars/
+inventory/group_vars/
+
+# SSH keys
+*.pem
+*.key
+*.pub
+.ssh/
+
+# Python virtual environments (if used with Ansible + Python)
+venv/
+.env/
+__pycache__/
+*.pyc
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+
+# VS Code settings (optional)
+.vscode/
+
+# Terraform if mixed with Ansible
+*.tfstate
+*.tfstate.*
+.terraform/

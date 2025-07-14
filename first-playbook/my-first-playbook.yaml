@@ -1,11 +1,11 @@
 ---
-- hosts: app
+- hosts: all
   become: true
   tasks:
     - name: Install apache httpd
       ansible.builtin.apt:
         name: apache2
-        state: present
+        state: absent
         update_cache: yes
     - name: Copy file with owner and permission
       ansible.builtin.copy:
@@ -14,8 +14,8 @@
         owner: root
         group: root
         mode: '0644'
-    - name: start apache service
-      ansible.builtin.service:
-        name: apache2
-        state: started
-        enabled: true
+    # - name: start apache service
+    #   ansible.builtin.service:
+    #     name: apache2
+    #     state: started
+    #     enabled: true

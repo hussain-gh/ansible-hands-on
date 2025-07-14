@@ -8,7 +8,7 @@
         state: present
         update_cache: yes
     - name: Copy file with owner and permission
-      ansible.inbuilt.copy:
+      ansible.builtin.copy:
         src: index/html
         dest: /var/www/html
         owner: root

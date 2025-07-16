@@ -1,11 +1,11 @@
 ---
 - hosts: app
-  become: true
+  become: true  
   tasks:
     - name: Install apache httpd
       ansible.builtin.apt:
         name: apache2
-        state: present
+        state: {{state}}
         update_cache: yes
       notify: Start Apache
       when: state == 'present'

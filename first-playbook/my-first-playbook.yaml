@@ -7,6 +7,9 @@
         name: apache2
         state: present
         update_cache: yes
+        notify: Start Apache
+        when: state == 'present'
+
     - name: Copy file with owner and permission
       ansible.builtin.copy:
         src: index.html
@@ -14,8 +17,17 @@
         owner: root
         group: root
         mode: '0644'
-    - name: start apache service
+        notify: Restart Apache
+        when: state == 'present'
+
+  handlers:
+    - name: Start Apache
       ansible.builtin.service:
         name: apache2
         state: started
         enabled: true
+
+    - name: Restart Apache
+      ansible.builtin.service:
+        name: apache2
+        state: restarted

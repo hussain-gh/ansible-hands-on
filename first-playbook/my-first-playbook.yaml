@@ -5,7 +5,7 @@
     - name: Install apache httpd
       ansible.builtin.apt:
         name: apache2
-        state: {{state}}
+        state: "{{state}}"
         update_cache: yes
       notify: Start Apache
       when: state == 'present'

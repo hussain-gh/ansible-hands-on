@@ -10,6 +10,20 @@
       notify: Start Apache
       when: state == 'present'
 
+    - name: Stop Apache before uninstalling
+      ansible.builtin.service:
+        name: apache2
+        state: stopped
+        enabled: false
+      when: state == 'absent'  
+
+    - name: Uninstall apache2 when state is absent
+      ansible.builtin.apt:
+        name: apache2
+        state: "{{ state }}"
+        update_cache: yes
+      when: state == 'absent'
+
     - name: Copy file with owner and permission
       ansible.builtin.copy:
         src: index.html
